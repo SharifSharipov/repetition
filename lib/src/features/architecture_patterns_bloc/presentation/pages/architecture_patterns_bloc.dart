@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:repetition/src/config/routes/app_routes.dart';
+<<<<<<< HEAD
 import 'package:repetition/src/features/architecture_patterns_bloc/presentation/manager/create_post_cubit/create_post_cubit.dart';
 import 'package:repetition/src/features/architecture_patterns_bloc/presentation/pages/create_pages.dart';
 import '../manager/cantroller/cubit.dart';
@@ -9,6 +10,19 @@ import '../widgets/item_of_state.dart';
 
 class ArchitecturePatternsBloc extends StatefulWidget {
   const ArchitecturePatternsBloc({Key? key}) : super(key: key);
+=======
+import 'package:repetition/src/features/architecture_patterns_bloc/data/models/post_model.dart';
+import 'package:repetition/src/features/architecture_patterns_bloc/presentation/manager/create_post_cubit/create_post_cubit.dart';
+import 'package:repetition/src/features/architecture_patterns_bloc/presentation/pages/create_pages.dart';
+import 'package:repetition/src/features/architecture_patterns_bloc/presentation/widgets/view_of_home.dart';
+import '../manager/cantroller/list_post_cubit.dart';
+import '../manager/cantroller/list_post_state.dart';
+import '../widgets/item_of_state.dart';
+
+class ArchitecturePatternsBloc extends StatefulWidget {
+  PostModel? postModel;
+  ArchitecturePatternsBloc({Key? key,this.postModel}) : super(key: key);
+>>>>>>> 1cfaa5b (update page add)
 
   @override
   State<ArchitecturePatternsBloc> createState() => _ArchitecturePatternsBlocState();
@@ -23,10 +37,23 @@ class _ArchitecturePatternsBlocState extends State<ArchitecturePatternsBloc> {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     double width = MediaQuery
         .of(context)
         .size
         .width;
+=======
+    List<PostModel> items = [];
+    TextEditingController titleController = TextEditingController();
+    TextEditingController bodyController = TextEditingController();
+    @override
+    void initState() {
+      super.initState();
+      titleController.text = widget.postModel!.title;
+      bodyController.text = widget.postModel!.body;
+    }
+    double width = MediaQuery.of(context).size.width;
+>>>>>>> 1cfaa5b (update page add)
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -40,6 +67,7 @@ class _ArchitecturePatternsBlocState extends State<ArchitecturePatternsBloc> {
       body: BlocBuilder<ListPostCubit, ListPostState>(
         builder: (context, state) {
           if (state is ListPostLoading) {
+<<<<<<< HEAD
             return viewPostLoading();
             ;
           } else if (state is ListPostLoaded) {
@@ -82,3 +110,20 @@ class _ArchitecturePatternsBlocState extends State<ArchitecturePatternsBloc> {
     }
   }
 }
+=======
+            return viewOfHome([], true); // Pass empty list and loading state
+          } else if (state is ListPostLoaded) {
+            return viewOfHome(state.postList, false); // Pass the list of posts from the state
+          } else if (state is ListPostError) {
+            return viewOfHome(items, false); //
+          }
+          return viewOfHome(items, true);
+        },
+      ),
+        floatingActionButton: FloatingActionButton(onPressed: (){
+          BlocProvider.of<CreatePostCubit>(context).callCreatePage(context);},
+          child: const Icon(Icons.add),)
+    );
+  }
+}
+>>>>>>> 1cfaa5b (update page add)

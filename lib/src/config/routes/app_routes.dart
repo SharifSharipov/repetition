@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
+=======
+import 'package:repetition/src/features/architecture_patterns_bloc/data/models/post_model.dart';
+>>>>>>> 1cfaa5b (update page add)
 import 'package:repetition/src/features/architecture_patterns_bloc/presentation/pages/architecture_patterns_bloc.dart';
 import 'package:repetition/src/features/architecture_patterns_bloc/presentation/pages/update_page.dart';
 import 'package:repetition/src/features/architecture_patterns_provider/presentation/pages/architecture_patterns_provider.dart';
@@ -22,6 +26,7 @@ class RouteNames {
       '/architecture_patterns_unit_widget_tests';
   static const String navigateScreen = '/navigate_screen';
   static const String exampleTwo = '/example_two';
+<<<<<<< HEAD
   static const String architecturePatternsMain="/architecture_patterns_main";
   static const String splashPage="/splash_page";
   static const String starterPage="/starter_page";
@@ -29,6 +34,16 @@ class RouteNames {
   static const String updatePage="update_page";
 }
 
+=======
+  static const String architecturePatternsMain = "/architecture_patterns_main";
+  static const String splashPage = "/splash_page";
+  static const String starterPage = "/starter_page";
+  static const String createPage = "create_page";
+  static const String updatePage = "update_page";
+}
+PostModel post=PostModel(id: 1, title: '', body: '', userId: 1);
+PostModel updatePost=post.copyWith();
+>>>>>>> 1cfaa5b (update page add)
 class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -36,7 +51,11 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => ArchitecturePatternsBloc());
       case RouteNames.architecturePatternsProvider:
         return MaterialPageRoute(builder: (context) {
+<<<<<<< HEAD
           return  const ArchitectureProvider();
+=======
+          return const ArchitectureProvider();
+>>>>>>> 1cfaa5b (update page add)
         });
       case RouteNames.architecturePatternsGetX:
         return MaterialPageRoute(builder: (context) {
@@ -44,7 +63,11 @@ class AppRoutes {
         });
       case RouteNames.architecturePatternsSetState:
         return MaterialPageRoute(builder: (context) {
+<<<<<<< HEAD
           return const  ArchitecturePatternsSetState();
+=======
+          return const ArchitecturePatternsSetState();
+>>>>>>> 1cfaa5b (update page add)
         });
       case RouteNames.architecturePatternsUnitWidgetTests:
         return MaterialPageRoute(builder: (context) {
@@ -76,7 +99,13 @@ class AppRoutes {
         });
       case RouteNames.updatePage:
         return MaterialPageRoute(builder: (context) {
+<<<<<<< HEAD
           return const UpdatePage();
+=======
+          return UpdatePage(
+            postModel: updatePost,
+          );
+>>>>>>> 1cfaa5b (update page add)
         });
       default:
         return MaterialPageRoute(
